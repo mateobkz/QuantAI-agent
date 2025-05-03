@@ -1,0 +1,7 @@
+yfinance
+pandas
+scikit-learn
+matplotlib
+nbformat
+GitPython
+schedule
