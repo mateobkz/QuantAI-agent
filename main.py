@@ -53,7 +53,7 @@ def main():
 
             y_true = get_real_close_price(data)
             mae = evaluate_prediction(y_true, prediction)
-            plot_predictions(y_true, prediction, model_name=model_type)
+            plot_predictions([y_true], [prediction], model_name=model_type)
 
             results.append({
                 "Ticker": ticker,

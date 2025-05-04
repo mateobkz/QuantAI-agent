@@ -16,14 +16,17 @@ def predict_next(data):
 
 # New function: predict_next_rf
 def predict_next_rf(data):
-    from sklearn.ensemble import RandomForestRegressor
+    """
+    Charge le modèle Random Forest sauvegardé et génère une prédiction.
+    """
     import joblib
 
+    # Préparer les features
     X = data[["Open", "High", "Low", "Volume"]].iloc[[-1]]
 
-    # Load Random Forest model
-    with open("models/random_forest_model.pkl", "rb") as f:
-        model = pickle.load(f)
+    # Charger le modèle avec joblib
+    model = joblib.load("models/random_forest_model.pkl")
 
+    # Générer la prédiction
     prediction = model.predict(X)[0]
     return prediction
