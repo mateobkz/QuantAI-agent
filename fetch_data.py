@@ -16,7 +16,15 @@ def fetch_data(tickers=["BTC/USDT"]):
 
     for ticker in tickers:
         try:
-            ohlcv = exchange.fetch_ohlcv(ticker, timeframe='1d', since=since, limit=365)
+            try:
+                ohlcv = exchange.fetch_ohlcv(ticker, timeframe='1d', since=since, limit=365)
+            except Exception as e:
+                print(f"[WARNING] Binance failed for {ticker}: {e}, falling back to Kraken")
+                # Switch to Kraken with USD pair
+                exchange = ccxt.kraken()
+                alt_ticker = ticker.replace('/USDT', '/USD')
+                ohlcv = exchange.fetch_ohlcv(alt_ticker, timeframe='1d', since=since, limit=365)
+                ticker = alt_ticker
             df = pd.DataFrame(ohlcv, columns=['timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'])
             df['Date'] = pd.to_datetime(df['timestamp'], unit='ms')
             df.set_index('Date', inplace=True)
