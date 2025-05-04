@@ -2,7 +2,7 @@ name: QuantAI Agent
 
 on:
   schedule:
-    - cron: '0 8 * * *'  # Tous les jours à 8h UTC (10h à Paris)
+    - cron: '0 2 * * *'  # Exécution tous les jours à 02:00 UTC
   workflow_dispatch:     # Lancement manuel possible
 
 jobs:
