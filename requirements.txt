@@ -5,3 +5,4 @@ matplotlib
 nbformat
 GitPython
 schedule
+ccxt
