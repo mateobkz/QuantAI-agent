@@ -43,7 +43,7 @@ def main():
 
     for ticker in tickers:
         try:
-            data_dict = fetch_data(ticker=[ticker])
+            data_dict = fetch_data(tickers=[ticker])
             data = data_dict[ticker]
             model_type = decide_next_model()
             train_model(data, model_type=model_type)
