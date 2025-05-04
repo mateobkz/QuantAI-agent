@@ -1,5 +1,8 @@
 name: QuantAI Agent
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '17 1 * * *'  # Exécution tous les jours à 03:12 CEST (01:12 UTC)
@@ -25,5 +28,5 @@ jobs:
 
       - name: Run agent
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 main.py
