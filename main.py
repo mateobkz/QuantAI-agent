@@ -44,7 +44,7 @@ def main():
     for ticker in tickers:
         try:
             data_dict = fetch_data(tickers=[ticker])
-            data = data_dict[ticker]
+            data = data_dict[ticker.replace("/", "")]
             model_type = decide_next_model()
             train_model(data, model_type=model_type)
             if model_type == "rf":
