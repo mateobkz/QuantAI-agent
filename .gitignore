@@ -1,1 +1,36 @@
 venv/
+# Environnements virtuels
+venv/
+.env/
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+*.so
+
+# Fichiers Jupyter
+.ipynb_checkpoints/
+
+# Fichiers de logs et de cache
+*.log
+*.sqlite3
+*.db
+.cache/
+*.pkl
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
