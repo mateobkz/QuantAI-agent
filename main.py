@@ -46,14 +46,13 @@ def main():
             data_dict = fetch_data(tickers=[ticker])
             data, _ = data_dict[ticker.replace("/", "")]
             model_type = decide_next_model()
-            train_model(data, model_type=model_type)
+            model = train_model(data, model_type=model_type)
             if model_type == "rf":
-                save_model_rf()
+                save_model_rf(model)
             prediction = predict_next_rf(data) if model_type == "rf" else predict_next(data)
 
             y_true = get_real_close_price(data)
             mae = evaluate_prediction(y_true, prediction)
-            from visualization import plot_predictions
             plot_predictions(y_true, prediction, model_name=model_type)
 
             results.append({
